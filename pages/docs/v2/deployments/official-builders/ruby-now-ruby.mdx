@@ -19,7 +19,7 @@ export const meta = {
 
 <Tag>Status: Alpha</Tag>
 
-This builder takes in a Ruby program that defines a singular HTTP handler and outputs it as a [Lambda](/docs/v2/deployments/concepts/lambdas).
+This builder takes in a Ruby program that defines a singular HTTP handler and outputs it as a serverless function.
 
 ## When to Use It
 
@@ -47,7 +47,7 @@ source "https://rubygems.org"
 gem "cowsay", "~> 0.3.0"
 ```
 
-And define a `now.json` like:
+And define a `now.json` like so:
 
 ```json
 {
@@ -87,7 +87,7 @@ require './app'
 run Sinatra::Application
 ```
 
-And define a `now.json` like:
+And define a `now.json` like so:
 
 ```json
 {
@@ -108,7 +108,7 @@ Rails creates a Rack config file `config.ru` in the root directory of the Rails 
 }
 ```
 
-Most frameworks use their own implementation of routing. However, you can use a catch-all route to circumvent the framework and instead use [Now Routing Layer](/docs/v2/deployments/routes) to match a route to a Lambda.
+Most frameworks use their own implementation of routing. However, you can use a catch-all route to circumvent the framework and instead use the [Now Routing Layer](/docs/v2/deployments/routes) to match a route to a serverless function.
 
 ## Technical Details
 
