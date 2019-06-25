@@ -97,8 +97,8 @@ export default () => (
     <h1>Welcome to our Next.js website!</h1>
     <p>
       View our{' '}
-      <Link href="/product?name=espresso">
-        <a>espresso product</a>
+      <Link href="/product?name=cappuccino">
+        <a>cappuccino product</a>
       </Link>
       !
     </p>
@@ -108,7 +108,7 @@ export default () => (
 
 <Note>
   In a real application, the product name query parameter would most likely be
-  dynamic based on other factors, but for simplicity, we'll use "espresso" as
+  dynamic based on other factors, but for simplicity, we'll use "cappuccino" as
   the product name.
 </Note>
 
@@ -140,8 +140,8 @@ import Link from 'next/link'
 export default () => (
   <div>
     <h1>Welcome to our Next.js website!</h1>
--   <p>View our <Link href="/product?name=espresso"><a>espresso product</a></Link>!</p>
-+   <p>View our <Link href="/product?name=espresso" as="/product/espresso"><a>espresso product</a></Link>!</p>
+-   <p>View our <Link href="/product?name=cappuccino"><a>cappuccino product</a></Link>!</p>
++   <p>View our <Link href="/product?name=cappuccino" as="/product/cappuccino"><a>cappuccino product</a></Link>!</p>
   </div>
 )
 ```
@@ -154,7 +154,7 @@ export default () => (
   of the changes made to the <InlineCode>index.js</InlineCode> page file.
 </Caption>
 
-Now, clicking the espresso product link will result in the URL path being `/product/espresso` while rendering the `product` page with the name query parameter set to `espresso`.
+Now, clicking the cappuccino product link will result in the URL path being `/product/cappuccino` while rendering the `product` page with the name query parameter set to `cappuccino`.
 
 ### Step 3: Defining `routes` configuration
 
@@ -167,7 +167,7 @@ Now, clicking the espresso product link will result in the URL path being `/prod
   to get started.
 </Note>
 
-When refreshing the URL with the path of `/product/espresso`, or accessing it directly, you will find that the server will return a 404 response. This is because there is no entry point that exists for that path. Next.js handles the routing to that page internally on the client-side. The next step is to provide Now with the context of this path to route to the `/product` page entry point.
+When refreshing the URL with the path of `/product/cappuccino`, or accessing it directly, you will find that the server will return a 404 response. This is because there is no entry point that exists for that path. Next.js handles the routing to that page internally on the client-side. The next step is to provide Now with the context of this path to route to the `/product` page entry point.
 
 For this context, we can use [the `routes` configuration option](/docs/v2/deployments/configuration#routes) inside of a `now.json` file:
 
