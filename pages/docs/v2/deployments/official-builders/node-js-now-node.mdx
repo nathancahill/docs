@@ -189,6 +189,37 @@ module.exports = (req, res) => {
   <InlineCode>ping</InlineCode>.
 </Caption>
 
+## Async support
+
+We support asynchronous functions out-of-the-box.
+
+In this example, we use the package `asciify-image` to create [ascii art](https://fr.wikipedia.org/wiki/Art_ASCII) from a person's avatar on github. First, we need to install the package:
+
+```
+yarn add asciify-image
+```
+
+In our code, we export an asynchronous function and we take advantage of the helpers.
+
+```js
+const asciify = require('asciify-image')
+
+module.exports = async (req, res) => {
+  if (!req.query.username) {
+    return res.status(400).send('username is missing from query parameters')
+  }
+
+  const avatarUrl = `https://github.com/${req.query.username}.png`
+
+  const opts = { fit: 'box', width: 40, height: 40 }
+  const asciified = await asciify(avatarUrl, opts)
+
+  return res.status(200).send(asciified)
+}
+```
+
+<Caption>An example showcasing the use of an asynchronous function.</Caption>
+
 ### Typescript support
 
 We provide types for the request and response objects.
@@ -220,37 +251,6 @@ export default function(req: NowRequest, res: NowResponse) {
   An example "Hello World" Typescript lambda using the{' '}
   <InlineCode>req.query</InlineCode> helper.
 </Caption>
-
-## Async support
-
-We support asynchronous functions out-of-the-box.
-
-In this example, we use the package `asciify-image` to create [ascii art](https://fr.wikipedia.org/wiki/Art_ASCII) from a person's avatar on github. First, we need to install the package:
-
-```
-yarn add asciify-image
-```
-
-In our code, we export an asynchronous function and we take advantage of the helpers.
-
-```js
-const asciify = require('asciify-image')
-
-module.exports = async (req, res) => {
-  if (!req.query.username) {
-    return res.status(400).send('username is missing from query parameters')
-  }
-
-  const avatarUrl = `https://github.com/${req.query.username}.png`
-
-  const opts = { fit: 'box', width: 40, height: 40 }
-  const asciified = await asciify(avatarUrl, opts)
-
-  return res.status(200).send(asciified)
-}
-```
-
-<Caption>An example showcasing the use of an asynchronous function.</Caption>
 
 ## Deploying with Static Content
 
